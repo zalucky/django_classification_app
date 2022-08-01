@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="container pt-5">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            Choose dataset: </br></br>
+            <form id="form1" action= '/approval' method="get">
+                <select name="model_name" id="model_name">
+                    {% for value in data.dataset1 %}
+                        <option value={{ value }} id="model_name"> {{ value }} </option>
+                    {% endfor %}
+                </select>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

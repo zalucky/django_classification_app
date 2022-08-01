@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<!-- Modal -->
+<div class="modal fade colorblack" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Rezultat</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>Data entered:</h5>
+                <div>{{data.a1}}: <span id="aa1"></span></div>
+                <div>{{data.a1}}: <span id="aa2"></span></div>
+
+                <h5 class="pt-3">Result:</h5>
+                <div id="prediction"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container pt-5">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            Loaded dataset:
+
+            <b>{{data.model_name}}</b> </br>
+            <h3>Enter data:</h3> </br>
+            
+            <form action="" id="post-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="a1">{{data.a1}}</label>
+                    <input type="number" step="0.1" class="form-control" id="a1" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label for="a2">{{data.a2}}</label>
+                    <input type="number" step="0.1" class="form-control" id="a2" placeholder="" required>
+                </div>
+
+
+                <button type="submit" value="Submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >Submit</button>
+                <button type="reset" value="Clear" class="btn btn-primary">Clear</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).on('submit', '#post-form',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:'{% url "predict:args2_chances" %}',
+            data:{
+                a1:$('#a1').val(),
+                a2:$('#a2').val(),
+
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                action: 'post'
+            },
+            success:function(json) {
+                document.forms["post-form"];
+                document.getElementById("prediction").innerHTML = json['result']
+                document.getElementById("aa1").innerHTML = json['a1']
+                document.getElementById("aa2").innerHTML = json['a2']
+
+            },
+            error : function(xhr,errmsg,err) {
+
+            }
+        });
+    })
+</script>
+
+{% endblock %}
+

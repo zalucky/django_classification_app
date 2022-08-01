@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main %}
+ 
+<div class="container pt-5">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            Do you want to load this dataset? </br></br>
+            Dataset name: <b>{{ data.name }}</b> </br>
+            Number of attributes: <b>{{ data.lst1_len }}</b> </br></br>
+            <form id="form2" action={{ data.link }} method="get">
+                <input type="hidden" value={{ data.name }} id=model_name name="model_name">
+                <button class="btn btn-primary" type="submit">Yes</button>
+            </form></br>
+            <form id="form3" action='/datasets/' method="get">
+                <button class="btn btn-primary" type="submit">No</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

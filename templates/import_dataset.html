@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="container pt-5">
+      <div class="row justify-content-md-center">
+          <div class="col-md-4">
+                  Choose name of dataset:
+                  <form action="/import_csv/" method="get">
+                        <input id="dataset_name" type="text" name="dataset_name">  </br>
+                        <label for="model_name"> Choose ML algorithm  </label> </br>
+                        <select name="model_name" id="model_name"> </br></br></br>
+                              <option value="svm" id="svm"> SVM </option>
+                              <option value="knn" id="knn"> KNeighbors </option>
+                              <option value="nb" id="nb"> Gaussian Naive Bayes </option>
+                              <option value="tree" id="tree"> Tree </option>
+                              <option value="nn" id="nn"> Neural Network </option>
+                        </select> </br></br>
+                        <button type="submit" value="Import dataset" class="button-59"> Submit </button>
+                  </form>
+            </div>
+      </div>
+  </div>
+
+{% endblock %}

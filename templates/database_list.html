@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="container pt-5">
+  <div class="row justify-content-md-center">
+      <div class="col-md-4">
+        <ul class="list-group">
+            <li class="list-group-item main_color1 text-center font-weight-bold udbcolor">Datasets List</li>
+
+              {% for value in data.dataset1 %}
+                <li class="list-group-item text-center udbcolor"> <p>{{ value }}</p> </li>
+              {% endfor %}
+        </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

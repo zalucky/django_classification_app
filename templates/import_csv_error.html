@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="container pt-5">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            The name of the dataset already exists, choose another! </br>
+            <form action="/import_dataset/">
+                <button class="btn btn-primary" type="submit" value="Exit">Back</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

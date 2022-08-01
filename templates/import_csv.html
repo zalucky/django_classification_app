@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="container pt-5">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+
+            Choose CSV file and click Import </br>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="importData"> 
+                <button class="btn btn-primary" type="submit">Import</button> 
+                
+            </form> </br>
+
+            When the page stops loading click Next</br>
+            <form action="/datasets/">
+                <button class="btn btn-primary" type="submit" value="Exit">Next</button>
+            </form>
+    
+        </div>
+    </div>
+</div>
+
+{% endblock %}
