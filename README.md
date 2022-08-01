@@ -35,4 +35,4 @@ Minumum ammount of attributes is 2 and maximum 9. \
 Then You have to upload .csv file from Your computer and click Import. \
 Wait for the browser to stop loading and then click Next. \
 (In the data_models should appear Your model.) \
-From the drop list choose Your dataset and click Submit. \
+From the drop list choose Your dataset and click Submit. 
